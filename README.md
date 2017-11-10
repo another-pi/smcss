@@ -10,7 +10,7 @@ Date: 2017-10-15
 
 以下内容没有使用，原因是有错或者没有完成，可以作为备用代码。
 
-# send char
+## send char
 
 ~~~~
 
@@ -18,7 +18,7 @@ Date: 2017-10-15
 
 
 
-# send number
+## send number
 
 Can not complie. MUMBER_LENGTH digital number.
 
@@ -71,7 +71,7 @@ void send_number(unsigned int a)
 ~~~~
 
 
-# send string
+## send string
 
 
 ~~~~
@@ -90,14 +90,14 @@ void  send_string(unsigned char p[])
 ~~~~
 
 
-# pricise delay
+## pricise delay
 
 ~~~~
 
 ~~~~
 
 
-# Software delay
+## Software delay
 
 ~~~~
 /******************************************************************************
@@ -135,7 +135,7 @@ void delay(unsigned int t)
 
 
 
-# led blink
+## led blink
 
 ~~~~
 sbit led   = P0^1;
@@ -157,7 +157,7 @@ void led_blink(unsigned char num)
 ~~~~
 
 
-# Speed?
+## Speed?
 
 ~~~~
 unsigned char speed = 0xFF;
@@ -176,7 +176,7 @@ void process_data()
 ~~~~
 
 
-# Serial port timeout reset byte_count
+## Serial port timeout reset byte_count
 
 ~~~~
 byte_count_last = byte_count_current;
