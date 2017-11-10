@@ -1,3 +1,11 @@
+# Introduction
+
+This is smcss(Step motor control system server).
+
+
+
+# Note
+
 Date: 2017-10-15
 
 以下内容没有使用，原因是有错或者没有完成，可以作为备用代码。
