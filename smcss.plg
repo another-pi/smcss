@@ -3,50 +3,13 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-F:\·ë½¨³¬\project\smcss\smcss.uvproj
-Project File Date:  10/19/2017
+F:\fengjianchao\project\smcss\smcss.uvproj
+Project File Date:  11/10/2017
 
 <h2>Output:</h2>
 Build target 'Target 1'
-assembling STARTUP.A51...
-compiling smcss.c...
-SMCSS.C(299): error C141: syntax error near 'l_data', expected ')'
-SMCSS.C(300): error C158: '_save_code': function contains unnamed parameter
-SMCSS.C(304): error C202: 'l_length': undefined identifier
-SMCSS.C(306): error C202: 'l_length': undefined identifier
-SMCSS.C(308): error C202: 'l_data': undefined identifier
-SMCSS.C(318): error C141: syntax error near 'l_data', expected ')'
-SMCSS.C(319): error C158: '_write_code': function contains unnamed parameter
-SMCSS.C(323): error C202: 'l_length': undefined identifier
-SMCSS.C(325): error C202: 'l_length': undefined identifier
-SMCSS.C(327): error C202: 'l_data': undefined identifier
-SMCSS.C(338): error C141: syntax error near 'l_data', expected ')'
-SMCSS.C(339): error C158: '_run': function contains unnamed parameter
-SMCSS.C(349): error C202: 'l_length': undefined identifier
-SMCSS.C(351): error C202: 'l_data': undefined identifier
-SMCSS.C(353): error C202: 'l_data': undefined identifier
-SMCSS.C(355): error C202: 'l_data': undefined identifier
-SMCSS.C(361): error C202: 'l_data': undefined identifier
-SMCSS.C(363): error C202: 'l_data': undefined identifier
-SMCSS.C(371): error C202: 'l_data': undefined identifier
-SMCSS.C(373): error C202: 'l_data': undefined identifier
-SMCSS.C(381): error C202: 'l_data': undefined identifier
-SMCSS.C(386): error C202: 'l_data': undefined identifier
-SMCSS.C(388): error C202: 'l_data': undefined identifier
-SMCSS.C(393): error C202: 'l_data': undefined identifier
-SMCSS.C(396): error C202: 'l_data': undefined identifier
-SMCSS.C(398): error C202: 'l_data': undefined identifier
-SMCSS.C(405): error C202: 'l_data': undefined identifier
-SMCSS.C(410): error C202: 'l_data': undefined identifier
-SMCSS.C(450): error C208: '_save_code': too many actual parameters
-SMCSS.C(462): error C208: '_run': too many actual parameters
-SMCSS.C(501): error C208: '_run': too many actual parameters
-SMCSS.C(546): error C208: '_write_code': too many actual parameters
-Target not created
-Build target 'Target 1'
-assembling STARTUP.A51...
 compiling smcss.c...
 linking...
-Program Size: data=38.1 xdata=96 code=3979
+Program Size: data=38.1 xdata=96 code=3988
 creating hex file from "smcss"...
 "smcss" - 0 Error(s), 0 Warning(s).

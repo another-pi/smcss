@@ -362,9 +362,9 @@
           <GroupName>doc</GroupName>
           <Files>
             <File>
-              <FileName>README.txt</FileName>
+              <FileName>README.md</FileName>
               <FileType>5</FileType>
-              <FilePath>.\README.txt</FilePath>
+              <FilePath>.\README.md</FilePath>
             </File>
           </Files>
         </Group>

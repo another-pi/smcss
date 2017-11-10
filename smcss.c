@@ -464,9 +464,8 @@ void process_data()
         else
         {
             /*
-             * Sorry, we do not know these code.
+             * Need more.
              */
-             byte_count = 0;
         }
     }
     else if (

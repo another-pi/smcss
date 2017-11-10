@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 1   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SMCSS
@@ -62,7 +62,7 @@ line level    source
   53           * Delay function use timer with flow time 100 us, unit is ms.
   54           *****************************************************************************/
   55          void delay(unsigned char t)
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 2   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 2   
 
   56          {
   57   1          TR0 = 1;
@@ -126,7 +126,7 @@ line level    source
  115   2              while(TI != 1)
  116   2              {
  117   3              }
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 3   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 3   
 
  118   2              TI = 0;
  119   2          }
@@ -190,7 +190,7 @@ line level    source
  177   1          TI = 1;
  178   1          printf("%02bX", p);
  179   1          while (TI == 0)
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 4   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 4   
 
  180   1          {
  181   2          }
@@ -254,7 +254,7 @@ line level    source
  239           * EEPROM code information
  240           *****************************************************************************/
  241          void code_information_eeprom()
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 5   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 5   
 
  242          {
  243   1          unsigned char i;
@@ -318,7 +318,7 @@ line level    source
  301   1          unsigned char i;
  302   1          
  303   1          code_id = code_id + 1;
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 6   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 6   
 
  304   1          code_length = l_length;
  305   1      
@@ -382,7 +382,7 @@ line level    source
  363   5                          delay100u(l_data[i] & 0x0F);
  364   5                      }
  365   4                      else
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 7   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 7   
 
  366   4                      {
  367   5                          /*
@@ -446,7 +446,7 @@ line level    source
  423          void process_data()
  424          {
  425   1          // Catch current byte count for follow judgement.
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 8   
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 8   
 
  426   1          byte_count_current = byte_count;
  427   1      
@@ -489,243 +489,242 @@ line level    source
  464   2              else
  465   2              {
  466   3                  /*
- 467   3                   * Sorry, we do not know these code.
+ 467   3                   * Need more.
  468   3                   */
- 469   3                   byte_count = 0;
- 470   3              }
- 471   2          }
- 472   1          else if (
- 473   1                  (byte_count_current >= 5) &&
- 474   1                  (RES[byte_count_current-1] == 0xEE) &&
- 475   1                  (RES[byte_count_current-2] == 0xEE) &&
- 476   1                  (RES[byte_count_current-3] == 0xEE) &&
- 477   1                  (RES[byte_count_current-4] == 0xEE) &&
- 478   1                  (RES[byte_count_current-5] == 0xEE)
- 479   1          )
- 480   1          {
- 481   2              /*
- 482   2               * This is a command for reset byte count.
- 483   2               */
- 484   2              byte_count = 0;
- 485   2              send_string("Reset send byte count.\n");
- 486   2              send_string("\n");
- 487   2          }
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 9   
+ 469   3              }
+ 470   2          }
+ 471   1          else if (
+ 472   1                  (byte_count_current >= 5) &&
+ 473   1                  (RES[byte_count_current-1] == 0xEE) &&
+ 474   1                  (RES[byte_count_current-2] == 0xEE) &&
+ 475   1                  (RES[byte_count_current-3] == 0xEE) &&
+ 476   1                  (RES[byte_count_current-4] == 0xEE) &&
+ 477   1                  (RES[byte_count_current-5] == 0xEE)
+ 478   1          )
+ 479   1          {
+ 480   2              /*
+ 481   2               * This is a command for reset byte count.
+ 482   2               */
+ 483   2              byte_count = 0;
+ 484   2              send_string("Reset send byte count.\n");
+ 485   2              send_string("\n");
+ 486   2          }
+ 487   1          else if (
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 9   
 
- 488   1          else if (
- 489   1                  (byte_count_current >= 5) &&
- 490   1                  (RES[byte_count_current-1] == 0xEF) &&
- 491   1                  (RES[byte_count_current-2] == 0xEF) &&
- 492   1                  (RES[byte_count_current-3] == 0xEF) &&
- 493   1                  (RES[byte_count_current-4] == 0xEF) &&
- 494   1                  (RES[byte_count_current-5] == 0xEF)
- 495   1          )
- 496   1          {
- 497   2              /*
- 498   2               * This is a command for start action.
- 499   2               */
- 500   2              byte_count = 0;
- 501   2              run(code_data, code_length);
- 502   2          }
- 503   1          else if (
- 504   1                  (byte_count_current >= 5) &&
- 505   1                  (RES[byte_count_current-1] == 0xE0) &&
- 506   1                  (RES[byte_count_current-2] == 0xE0) &&
- 507   1                  (RES[byte_count_current-3] == 0xE0) &&
- 508   1                  (RES[byte_count_current-4] == 0xE0) &&
- 509   1                  (RES[byte_count_current-5] == 0xE0)
- 510   1          )
- 511   1          {
- 512   2              /*
- 513   2               * This is a command for display ram code information.
- 514   2               */
- 515   2              byte_count = 0;
- 516   2              code_information_ram();
- 517   2          }
- 518   1          else if (
- 519   1                  (byte_count_current >= 5) &&
- 520   1                  (RES[byte_count_current-1] == 0xE1) &&
- 521   1                  (RES[byte_count_current-2] == 0xE1) &&
- 522   1                  (RES[byte_count_current-3] == 0xE1) &&
- 523   1                  (RES[byte_count_current-4] == 0xE1) &&
- 524   1                  (RES[byte_count_current-5] == 0xE1)
- 525   1          )
- 526   1          {
- 527   2              /*
- 528   2               * This is a command for display eeprom code information.
- 529   2               */
- 530   2              byte_count = 0;
- 531   2              code_information_eeprom();
- 532   2          }
- 533   1          else if (
- 534   1                  (byte_count_current >= 5) &&
- 535   1                  (RES[byte_count_current-1] == 0xE5) &&
- 536   1                  (RES[byte_count_current-2] == 0xE5) &&
- 537   1                  (RES[byte_count_current-3] == 0xE5) &&
- 538   1                  (RES[byte_count_current-4] == 0xE5) &&
- 539   1                  (RES[byte_count_current-5] == 0xE5)
- 540   1          )
- 541   1          {
- 542   2              /*
- 543   2               * This is a command for Write data to EEPROM.
- 544   2               */
- 545   2              byte_count = 0;
- 546   2              write_code(code_data, code_length);
- 547   2          }
- 548   1          else if (
- 549   1                  (byte_count_current >= 5) &&
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 10  
+ 488   1                  (byte_count_current >= 5) &&
+ 489   1                  (RES[byte_count_current-1] == 0xEF) &&
+ 490   1                  (RES[byte_count_current-2] == 0xEF) &&
+ 491   1                  (RES[byte_count_current-3] == 0xEF) &&
+ 492   1                  (RES[byte_count_current-4] == 0xEF) &&
+ 493   1                  (RES[byte_count_current-5] == 0xEF)
+ 494   1          )
+ 495   1          {
+ 496   2              /*
+ 497   2               * This is a command for start action.
+ 498   2               */
+ 499   2              byte_count = 0;
+ 500   2              run(code_data, code_length);
+ 501   2          }
+ 502   1          else if (
+ 503   1                  (byte_count_current >= 5) &&
+ 504   1                  (RES[byte_count_current-1] == 0xE0) &&
+ 505   1                  (RES[byte_count_current-2] == 0xE0) &&
+ 506   1                  (RES[byte_count_current-3] == 0xE0) &&
+ 507   1                  (RES[byte_count_current-4] == 0xE0) &&
+ 508   1                  (RES[byte_count_current-5] == 0xE0)
+ 509   1          )
+ 510   1          {
+ 511   2              /*
+ 512   2               * This is a command for display ram code information.
+ 513   2               */
+ 514   2              byte_count = 0;
+ 515   2              code_information_ram();
+ 516   2          }
+ 517   1          else if (
+ 518   1                  (byte_count_current >= 5) &&
+ 519   1                  (RES[byte_count_current-1] == 0xE1) &&
+ 520   1                  (RES[byte_count_current-2] == 0xE1) &&
+ 521   1                  (RES[byte_count_current-3] == 0xE1) &&
+ 522   1                  (RES[byte_count_current-4] == 0xE1) &&
+ 523   1                  (RES[byte_count_current-5] == 0xE1)
+ 524   1          )
+ 525   1          {
+ 526   2              /*
+ 527   2               * This is a command for display eeprom code information.
+ 528   2               */
+ 529   2              byte_count = 0;
+ 530   2              code_information_eeprom();
+ 531   2          }
+ 532   1          else if (
+ 533   1                  (byte_count_current >= 5) &&
+ 534   1                  (RES[byte_count_current-1] == 0xE5) &&
+ 535   1                  (RES[byte_count_current-2] == 0xE5) &&
+ 536   1                  (RES[byte_count_current-3] == 0xE5) &&
+ 537   1                  (RES[byte_count_current-4] == 0xE5) &&
+ 538   1                  (RES[byte_count_current-5] == 0xE5)
+ 539   1          )
+ 540   1          {
+ 541   2              /*
+ 542   2               * This is a command for Write data to EEPROM.
+ 543   2               */
+ 544   2              byte_count = 0;
+ 545   2              write_code(code_data, code_length);
+ 546   2          }
+ 547   1          else if (
+ 548   1                  (byte_count_current >= 5) &&
+ 549   1                  (RES[byte_count_current-1] == 0xE6) &&
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 10  
 
- 550   1                  (RES[byte_count_current-1] == 0xE6) &&
- 551   1                  (RES[byte_count_current-2] == 0xE6) &&
- 552   1                  (RES[byte_count_current-3] == 0xE6) &&
- 553   1                  (RES[byte_count_current-4] == 0xE6) &&
- 554   1                  (RES[byte_count_current-5] == 0xE6)
- 555   1          )
- 556   1          {
- 557   2              /*
- 558   2               * This is a command for load data from EEPROM.
- 559   2               */
- 560   2              byte_count = 0;
- 561   2              load_code();
- 562   2          }
- 563   1          else
- 564   1          {
- 565   2              /*
- 566   2               * Give more.
- 567   2               */
- 568   2          }
- 569   1      }
+ 550   1                  (RES[byte_count_current-2] == 0xE6) &&
+ 551   1                  (RES[byte_count_current-3] == 0xE6) &&
+ 552   1                  (RES[byte_count_current-4] == 0xE6) &&
+ 553   1                  (RES[byte_count_current-5] == 0xE6)
+ 554   1          )
+ 555   1          {
+ 556   2              /*
+ 557   2               * This is a command for load data from EEPROM.
+ 558   2               */
+ 559   2              byte_count = 0;
+ 560   2              load_code();
+ 561   2          }
+ 562   1          else
+ 563   1          {
+ 564   2              /*
+ 565   2               * Give more.
+ 566   2               */
+ 567   2          }
+ 568   1      }
+ 569          
  570          
- 571          
- 572          /******************************************************************************
- 573           * Initial
- 574           *****************************************************************************/
- 575          void initial()
- 576          {
- 577   1          // Timer 1 mode 2
- 578   1          TMOD = 0x20;
- 579   1      
- 580   1          // Timer 1, serial port bitrate 9600
- 581   1          TH1 = 0xFD;
- 582   1          TL1 = TH1;
- 583   1      
- 584   1          // Serial port mode 1
- 585   1          SCON = 0x50;
- 586   1          PCON = 0x00;
- 587   1      
- 588   1          // Serial port interrupt open.
- 589   1          ES = 1;
- 590   1      
- 591   1          // Timer 0 mode 2
- 592   1          TMOD = TMOD | 0x02;
- 593   1      
- 594   1          // Timer 0, flow time is 50 us
- 595   1          TH0 = 0xA4;
- 596   1          TL0 = TH0;
- 597   1      
- 598   1          // Timer0 interrupt
- 599   1          ET0 = 1;
- 600   1      
- 601   1          // Main interrupt open.
- 602   1          EA = 1;
- 603   1      
- 604   1          // Timer 1 begin to count.
- 605   1          TR1 = 1;
- 606   1      
- 607   1          // ISP
- 608   1          ISP_CONTR = 0x9A;
- 609   1          ISP_ADDRH = 0x21;
- 610   1          ISP_ADDRL = 0x00;
- 611   1      }
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 11  
+ 571          /******************************************************************************
+ 572           * Initial
+ 573           *****************************************************************************/
+ 574          void initial()
+ 575          {
+ 576   1          // Timer 1 mode 2
+ 577   1          TMOD = 0x20;
+ 578   1      
+ 579   1          // Timer 1, serial port bitrate 9600
+ 580   1          TH1 = 0xFD;
+ 581   1          TL1 = TH1;
+ 582   1      
+ 583   1          // Serial port mode 1
+ 584   1          SCON = 0x50;
+ 585   1          PCON = 0x00;
+ 586   1      
+ 587   1          // Serial port interrupt open.
+ 588   1          ES = 1;
+ 589   1      
+ 590   1          // Timer 0 mode 2
+ 591   1          TMOD = TMOD | 0x02;
+ 592   1      
+ 593   1          // Timer 0, flow time is 50 us
+ 594   1          TH0 = 0xA4;
+ 595   1          TL0 = TH0;
+ 596   1      
+ 597   1          // Timer0 interrupt
+ 598   1          ET0 = 1;
+ 599   1      
+ 600   1          // Main interrupt open.
+ 601   1          EA = 1;
+ 602   1      
+ 603   1          // Timer 1 begin to count.
+ 604   1          TR1 = 1;
+ 605   1      
+ 606   1          // ISP
+ 607   1          ISP_CONTR = 0x9A;
+ 608   1          ISP_ADDRH = 0x21;
+ 609   1          ISP_ADDRL = 0x00;
+ 610   1      }
+ 611          
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 11  
 
  612          
- 613          
- 614          /******************************************************************************
- 615           * Main
- 616           *****************************************************************************/
- 617          void main()
- 618          {
- 619   1          initial();
- 620   1      
- 621   1          welcome();
- 622   1      
- 623   1          load_code();
- 624   1      
- 625   1          while (1)
- 626   1          {
- 627   2              process_data();
- 628   2          }
- 629   1      }
+ 613          /******************************************************************************
+ 614           * Main
+ 615           *****************************************************************************/
+ 616          void main()
+ 617          {
+ 618   1          initial();
+ 619   1      
+ 620   1          welcome();
+ 621   1      
+ 622   1          load_code();
+ 623   1      
+ 624   1          while (1)
+ 625   1          {
+ 626   2              process_data();
+ 627   2          }
+ 628   1      }
+ 629          
  630          
- 631          
- 632          /******************************************************************************
- 633           * Interrupt for serial port UART
- 634           *****************************************************************************/
- 635          void uart_interrupt0() interrupt 4
- 636          {
- 637   1          if (RI == 1)
- 638   1          {
- 639   2              /*
- 640   2               * Is a recieve interrupt.
- 641   2               */
- 642   2              RI = 0;
- 643   2      
- 644   2              RES[byte_count] = SBUF;
- 645   2              byte_count = byte_count + 1;
- 646   2      
- 647   2              if (byte_count > MAX_CODE_LENGTH)
- 648   2              {
- 649   3                  byte_count = 0;
- 650   3              }
- 651   2              else
- 652   2              {
- 653   3              }
- 654   2      
- 655   2              if (
- 656   2                      (byte_count >= 5) &&
- 657   2                      (RES[byte_count-1] == 0xEA) &&
- 658   2                      (RES[byte_count-2] == 0xEA) &&
- 659   2                      (RES[byte_count-3] == 0xEA) &&
- 660   2                      (RES[byte_count-4] == 0xEA) &&
- 661   2                      (RES[byte_count-5] == 0xEA)
- 662   2              )
- 663   2              {
- 664   3                  /*
- 665   3                   * MCU reset, even though when running.
- 666   3                   */
- 667   3                  byte_count = 0;
- 668   3                  send_string_interrupt("**** RESET ****\n");
- 669   3                  send_string_interrupt("\n");
- 670   3                  ISP_CONTR = ISP_CONTR | 0x20;
- 671   3              }
- 672   2              else
- 673   2              {
-C51 COMPILER V9.00   SMCSS                                                                 10/19/2017 15:07:43 PAGE 12  
+ 631          /******************************************************************************
+ 632           * Interrupt for serial port UART
+ 633           *****************************************************************************/
+ 634          void uart_interrupt0() interrupt 4
+ 635          {
+ 636   1          if (RI == 1)
+ 637   1          {
+ 638   2              /*
+ 639   2               * Is a recieve interrupt.
+ 640   2               */
+ 641   2              RI = 0;
+ 642   2      
+ 643   2              RES[byte_count] = SBUF;
+ 644   2              byte_count = byte_count + 1;
+ 645   2      
+ 646   2              if (byte_count > MAX_CODE_LENGTH)
+ 647   2              {
+ 648   3                  byte_count = 0;
+ 649   3              }
+ 650   2              else
+ 651   2              {
+ 652   3              }
+ 653   2      
+ 654   2              if (
+ 655   2                      (byte_count >= 5) &&
+ 656   2                      (RES[byte_count-1] == 0xEA) &&
+ 657   2                      (RES[byte_count-2] == 0xEA) &&
+ 658   2                      (RES[byte_count-3] == 0xEA) &&
+ 659   2                      (RES[byte_count-4] == 0xEA) &&
+ 660   2                      (RES[byte_count-5] == 0xEA)
+ 661   2              )
+ 662   2              {
+ 663   3                  /*
+ 664   3                   * MCU reset, even though when running.
+ 665   3                   */
+ 666   3                  byte_count = 0;
+ 667   3                  send_string_interrupt("**** RESET ****\n");
+ 668   3                  send_string_interrupt("\n");
+ 669   3                  ISP_CONTR = ISP_CONTR | 0x20;
+ 670   3              }
+ 671   2              else
+ 672   2              {
+ 673   3              }
+C51 COMPILER V9.00   SMCSS                                                                 11/10/2017 20:57:05 PAGE 12  
 
- 674   3              }
- 675   2          }
- 676   1      
- 677   1          if (TI == 1)
- 678   1          {
- 679   2              /*
- 680   2               * Is a transport interrupt.
- 681   2               */
- 682   2          }
- 683   1      }
- 684          
- 685          /******************************************************************************
- 686           * Interrupt for Timer 0 overflow
- 687           *****************************************************************************/
- 688          void timer0_interrupt() interrupt 1
- 689          {
- 690   1          timer0_number = timer0_number + 1;
- 691   1      }
+ 674   2          }
+ 675   1      
+ 676   1          if (TI == 1)
+ 677   1          {
+ 678   2              /*
+ 679   2               * Is a transport interrupt.
+ 680   2               */
+ 681   2          }
+ 682   1      }
+ 683          
+ 684          /******************************************************************************
+ 685           * Interrupt for Timer 0 overflow
+ 686           *****************************************************************************/
+ 687          void timer0_interrupt() interrupt 1
+ 688          {
+ 689   1          timer0_number = timer0_number + 1;
+ 690   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   2067    ----
+   CODE SIZE        =   2076    ----
    CONSTANT SIZE    =    516    ----
    XDATA SIZE       =     96    ----
    PDATA SIZE       =   ----    ----
