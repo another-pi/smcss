@@ -1,207 +1,61 @@
 # Introduction
 
-This is smcss(Step motor control system server).
+This is smcss(step motor control system server).
+
+It runs under a STC89C52 MCU, which controls a stepping motor according command
+sent from [a client program](https://github.com/cddwx/smcsc) runs under PC
+through serial port.
+
+It can read command, parse, operate output pins, then wait for next command.
 
 
+## Command design
 
-# Note
+The commands is HEX data, serval format are defined for command use, commands
+supported at present are:
 
-Date: 2017-10-15
+    Function                            HEX code
+    --------------------------------    ------------------
+    Emergency reset                     EAEAEAEAEA
+    Clear recieve strings               EEEEEEEEEE
+    Show command in RAM                 E0E0E0E0E0
+    Show command in EEPROM              E1E1E1E1E1
+    Store command to EEPROM             E5E5E5E5E5
+    Load command in EEPROM to RAM       E6E6E6E6E6
+    Run command in RAM                  EFEFEFEFEF
+    Run this command                    111111{main command}
 
-以下内容没有使用，原因是有错或者没有完成，可以作为备用代码。
+# Develop environment
 
-## send char
+* STC89C52 MCU
+* Keil
+* STC flash tool in offical website
 
-~~~~
+The program use MCU ISP instructions and xdata type memery.
 
-~~~~
+# Quick guide
 
+## Deploy
 
+In my situation:
 
-## send number
+* Keil to compile
+* STC flash tool in offical website to download program to MCU
 
-Can not complie. MUMBER_LENGTH digital number.
+## Usage
 
-~~~~
-#include <stdio.h>
+### Use STC flash tool
 
-#define NUMBER_LENGTH 3
+STC flash tool in offical website to send serial port data
 
-/******************************************************************************
- * Send number
- *****************************************************************************/
-void send_number(unsigned int a)
-{
-    unsigned char char_buffer[NUMBER_LENGTH];
-    
-    sprintf(char_buffer, "%d", a);
-    
-    unsigned char i;
-    for (i = 0; i <= 3; i ++)
-    {
-        send_char(char_buffer[i]);
-    }
-}
-~~~~
+### Use [smcsc client program](https://github.com/cddwx/smcsc)
 
+This is a python program, compile to binary use pyinstaller is also OK, see
+project page for detail.
 
-three digital number
+The program define a more human readable commands, when send to MCU, it
+transform the commands to HEX.
 
-~~~~
-#include <stdio.h>
-
-/******************************************************************************
- * Send number
- *****************************************************************************/
-void send_number(unsigned int a)
-{
-    int s;
-    int base;
-    
-    base = 100;
-    
-    while (base > 0)
-    {
-        s = a / base;
-        send_char((unsigned char) (s + '0'));
-        a = a % base;
-        base = base / 10;
-    }
-}
-~~~~
-
-
-## send string
-
-
-~~~~
-/******************************************************************************
- * send_string
- *****************************************************************************/
-void  send_string(unsigned char p[])
-{
-    TI = 1;
-    printf("%s", p);
-    while (TI == 0)
-    {
-    }
-    TI = 0;
-}
-~~~~
-
-
-## pricise delay
-
-~~~~
-
-~~~~
-
-
-## Software delay
-
-~~~~
-/******************************************************************************
- * Delay function, unit is 100 us.
- *****************************************************************************/
-void delay100u(unsigned char t)
-{
-    unsigned char i;
-    for( ; t > 0; t --)
-    {
-        for(i = 44; i > 0; i --)
-        {
-        }
-    }
-}
-
-
-/******************************************************************************
- * Delay function, unit is ms.
- *****************************************************************************/
-void delay(unsigned int t)
-{
-    unsigned char i, j;
-    for(; t > 0; t --)
-    {
-        for(i = 102; i > 0; i --)
-        {
-            for(j = 3; j > 0; j --)
-            {
-            }
-        }
-    }
-}
-~~~~
-
-
-
-## led blink
-
-~~~~
-sbit led   = P0^1;
-
-/******************************************************************************
- * Led blink.
- *****************************************************************************/
-void led_blink(unsigned char num)
-{
-    unsigned char i;
-    for(i = 0; i < num; i ++)
-    {
-        led = 0;
-        delay(5000);
-        led = 1;
-        delay(5000);
-    }
-}
-~~~~
-
-
-## Speed?
-
-~~~~
-unsigned char speed = 0xFF;
-
-void process_data()
-{
-    // What is the use of speed?
-    if (speed < 0xFF)
-    {
-        speed ++;
-    }
-    else
-    {
-    }
-}
-~~~~
-
-
-## Serial port timeout reset byte_count
-
-~~~~
-byte_count_last = byte_count_current;
-
-if (TR0 == 0)
-{
-    TR0 = 1;
-}
-else
-{
-}
-
-if (timer0_number >= 20000)
-{
-    TR0 = 0;
-    timer0_number = 0;
-    if (byte_count_current > byte_count_last)
-    {
-    }
-    else
-    {
-        byte_count = 0;
-    }
-}
-else
-{
-}
-~~~~
+The program also support batch mode, that is to say, you can write many commands
+by lines, then send together.
+The program can transform them one by one, and then send to MCU one by one.
